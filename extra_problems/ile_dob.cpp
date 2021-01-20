@@ -108,7 +108,7 @@ int main()
             int seconds_in_first_day = first_date[3] * seconds_in_hour + first_date[4] * seconds_in_minute + first_date[5];
             int seconds_in_last_day = second_date[3] * seconds_in_hour + second_date[4] * seconds_in_minute + second_date[5];
                 
-            if (seconds_in_day - seconds_in_first_day - seconds_in_last_day < seconds_in_day)
+            if (seconds_in_day - seconds_in_first_day + seconds_in_last_day < seconds_in_day)
             {
                 days_diff--;
             }
