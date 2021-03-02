@@ -38,7 +38,11 @@ std::vector<float> RownanieKwadratowe::przetworz_dane()
 
 void RownanieKwadratowe::wyswietl_wynik(std::vector<float> wynik)
 {
-    if (a == 0)
+    if (a == 0 && b == 0 && c!=0)
+    {
+        std::cout << "Równanie sprzeczne" << std::endl;
+    }
+    else if (a == 0)
     {
         std::cout << "Równanie liniowe (a=0)" << std::endl;
     }
