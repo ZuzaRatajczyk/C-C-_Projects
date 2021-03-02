@@ -18,7 +18,7 @@ Wyjście Standardowe
 Wyjście zawiera w kolejnych D wierszach pojedyncze liczby całkowite będące rozwiązaniem dla kolejnych testów, 
 tzn. liczbę dób mieszczących się pomiędzy danymi chwilami T1 i T2.
 
-Przykład Dla danych wejściowych:
+Przykład dla danych wejściowych:
 
 5
 
