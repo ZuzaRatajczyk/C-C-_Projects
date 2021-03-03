@@ -22,8 +22,6 @@ void get_dates(int first_date[6], int second_date[6])
         first_date[i];
     }
 
-    std::cout << std::endl;
-
     for (int i = 0; i < 6; i++)
     {
         second_date[i];
@@ -103,15 +101,12 @@ int main()
             }
         }
 
-        if (first_date[2] != second_date[2])
+        int seconds_in_first_day = first_date[3] * seconds_in_hour + first_date[4] * seconds_in_minute + first_date[5];
+        int seconds_in_last_day = second_date[3] * seconds_in_hour + second_date[4] * seconds_in_minute + second_date[5];
+            
+        if (seconds_in_day - seconds_in_first_day + seconds_in_last_day < seconds_in_day)
         {
-            int seconds_in_first_day = first_date[3] * seconds_in_hour + first_date[4] * seconds_in_minute + first_date[5];
-            int seconds_in_last_day = second_date[3] * seconds_in_hour + second_date[4] * seconds_in_minute + second_date[5];
-                
-            if (seconds_in_day - seconds_in_first_day + seconds_in_last_day < seconds_in_day)
-            {
-                days_diff--;
-            }
+            days_diff--;
         }
 
         results[i] = days_diff;
