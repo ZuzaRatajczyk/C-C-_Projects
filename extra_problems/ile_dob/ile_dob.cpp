@@ -6,25 +6,26 @@ const int seconds_in_minute = 60;
 const int seconds_in_hour = 60 * seconds_in_minute;
 const int seconds_in_day = 24 * seconds_in_hour;
 
-void get_dates(int first_date[6], int second_date[6])
+struct Date
 {
-    for (int i = 0; i < 6; i++)
-    {
-        std::cin >> first_date[i];
-    }
+    int year;
+    int month;
+    int day;
+    int hour;
+    int minute;
+    int second;
+};
 
-    for (int i = 0; i < 6; i++)
+void get_dates(Date Dates[2])
+{
+    for (int i = 0; i < 2; i++)
     {
-        std::cin >> second_date[i];
-    }    
-    for (int i = 0; i < 6; i++)
-    {
-        first_date[i];
-    }
-
-    for (int i = 0; i < 6; i++)
-    {
-        second_date[i];
+        std:: cin >> Dates[i].year;
+        std::cin >> Dates[i].month;
+        std::cin >> Dates[i].day;
+        std::cin >> Dates[i].hour;
+        std::cin >> Dates[i].minute;
+        std::cin >> Dates[i].second;
     }
 }
 
@@ -59,8 +60,7 @@ int main()
 {
 
     int results[2000] = {0};
-    int first_date[6] = {0};
-    int second_date[6] = {0};
+    Date Dates[2];
     int num_of_sets;
 
     std::cin >> num_of_sets;
@@ -70,29 +70,29 @@ int main()
     {
         int days_diff = 0;
 
-        get_dates(first_date, second_date);
+        get_dates(Dates);
 
-        if (first_date[0] == second_date[0])   // jeśli obydwie chwile są w tym samym roku
+        if (Dates[0].year == Dates[1].year)   // jeśli obydwie chwile są w tym samym roku
         {
-            bool is_leap = check_if_leap(first_date[0]);
-            int first_day_of_year = calc_day_of_year(first_date[1], first_date[2], is_leap);
-            int second_day_of_year = calc_day_of_year(second_date[1], second_date[2], is_leap);
+            bool is_leap = check_if_leap(Dates[0].year);
+            int first_day_of_year = calc_day_of_year(Dates[0].month, Dates[0].day, is_leap);
+            int second_day_of_year = calc_day_of_year(Dates[1].month, Dates[1].day, is_leap);
             days_diff = second_day_of_year - first_day_of_year;  // odjęcie liczby dni roku do chwili T1 od liczby dni roku do chwili T2
         }
         else
         {
-            for (int year = first_date[0]; year <= second_date[0]; year++)
+            for (int year = Dates[0].year; year <= Dates[1].year; year++)
             {
                 bool is_leap = check_if_leap(year);
 
-                if (year == first_date[0])
+                if (year == Dates[0].year)
                 {
-                    int day_of_year = calc_day_of_year(first_date[1], first_date[2], is_leap);
+                    int day_of_year = calc_day_of_year(Dates[0].month, Dates[0].day, is_leap);
                     days_diff += is_leap ? 366 - day_of_year : 365 - day_of_year;  // obliczanie liczby dni od chwili T1 do końca roku
                 }
-                else if (year == second_date[0])
+                else if (year == Dates[1].year)
                 {
-                    days_diff += calc_day_of_year(second_date[1], second_date[2], is_leap);  // obliczanie liczby dni od chwili T2 do początku roku 
+                    days_diff += calc_day_of_year(Dates[1].month, Dates[1].day, is_leap); // obliczanie liczby dni od chwili T2 do początku roku
                 }
                 else
                 {
@@ -101,9 +101,9 @@ int main()
             }
         }
 
-        int seconds_in_first_day = first_date[3] * seconds_in_hour + first_date[4] * seconds_in_minute + first_date[5];
-        int seconds_in_last_day = second_date[3] * seconds_in_hour + second_date[4] * seconds_in_minute + second_date[5];
-            
+        int seconds_in_first_day = Dates[0].hour * seconds_in_hour + Dates[0].minute * seconds_in_minute + Dates[0].second;
+        int seconds_in_last_day = Dates[1].hour * seconds_in_hour + Dates[1].minute * seconds_in_minute + Dates[1].second;
+
         if (seconds_in_day - seconds_in_first_day + seconds_in_last_day < seconds_in_day)
         {
             days_diff--;
