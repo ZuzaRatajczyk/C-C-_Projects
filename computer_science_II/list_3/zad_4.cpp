@@ -17,6 +17,7 @@ int main()
         cout << "Liczby nie są sobie równe" << endl;
     }
     num1.show_number();
+    num2.show_number();
     num1 += num2;
     if (num1 != num2)
     {
