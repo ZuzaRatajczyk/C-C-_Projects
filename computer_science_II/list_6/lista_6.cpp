@@ -10,7 +10,7 @@ class TZwierze
     public:
     TZwierze();
     TZwierze(string nazwa, int wiek);
-    ~TZwierze();
+    ~TZwierze() {}; 
     void CzytajDane();
     void PiszDane();
     virtual void DajGlos();
@@ -22,6 +22,7 @@ class TPies : public TZwierze
     public:
     TPies();
     TPies(string nazwa, int wiek);
+    ~TPies() {};
     void DajGlos();
 };
 
@@ -30,6 +31,7 @@ class TKrowa : public TZwierze
     public:
     TKrowa();
     TKrowa(string nazwa, int wiek);
+    ~TKrowa() {}; 
     void DajGlos();
 };
 
@@ -38,6 +40,7 @@ class TKot : public TZwierze
     public:
     TKot();
     TKot(string nazwa, int wiek);
+    ~TKot() {};
     void DajGlos();
 };
 
@@ -52,8 +55,6 @@ TZwierze::TZwierze(string nazwa, int wiek)
     Nazwa = nazwa;
     Wiek = wiek;
 }
-
-TZwierze::~TZwierze() {}
 
 
 void TZwierze::CzytajDane()
