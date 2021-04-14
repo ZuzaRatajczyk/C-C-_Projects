@@ -120,6 +120,8 @@ int main()
     Mruczek.DajGlos();
 
     TZwierze *wsk;
+    wsk = &JakiesZwierze;
+    wsk->DajGlos();
     wsk = &Azor;
     wsk->DajGlos();
     wsk = &Krasula;
@@ -127,6 +129,7 @@ int main()
     wsk = &Mruczek;
     wsk->DajGlos();
 
+    Odglos(JakiesZwierze);
     Odglos(Azor);
     Odglos(Krasula);
     Odglos(Mruczek);
