@@ -8,11 +8,16 @@ void show_element(int element)
     cout << element << endl;
 }
 
-vector<int>::iterator myfunction(vector<int> &vec, int i, int element)
-{ 
-    while(element < vec[i-1])
+vector<int>::iterator find_position(vector<int> &vec, int element)
+{
+    int i = 0;
+    while (element > vec[i])
     {
-        i--;
+        i++;
+        if (i == vec.size())
+        {
+            return vec.begin() + i;
+        }
     }
     return vec.begin() + i;
 }
@@ -26,7 +31,7 @@ int main()
     for (int i = 0; i < 999; i++)
     {
         int el = rand() % (1000 + 1);
-        B.insert(myfunction(B, i, el), el);
+        B.insert(find_position(B, el), el);
     }
 
     for_each(B.begin(), B.end(), show_element);
